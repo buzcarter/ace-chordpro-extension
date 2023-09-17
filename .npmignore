@@ -1,0 +1,23 @@
+__tests__
+.babelrc
+.built
+.editorconfig
+.eslintignore
+.eslintrc.cjs
+.github
+.gitignore
+.lib
+.npmrc
+.nvmrc
+.vscode
+*.tgz
+coverage
+jest
+jest.config.cjs
+# src
+tsconfig.json
+webpack.config**.*
+
+# until I fix WebPack CSS script
+/dist/song-formatter.js
+/dist/song-formatter.js.map

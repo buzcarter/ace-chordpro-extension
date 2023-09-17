@@ -1,0 +1,8 @@
+.built
+.DS_Store
+.tmp
+*.tgz
+/coverage
+/dist
+node_modules
+original

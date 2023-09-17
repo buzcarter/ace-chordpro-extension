@@ -1,0 +1,15 @@
+coverage/**/*
+dist
+node_modules
+
+# specific files
+src/scripts/ace/ace.js
+src/scripts/ace/ace.bundle.js
+src/scripts/ace/ace.min.js
+src/scripts/ace/ext
+src/scripts/ace/ext-language_tools.min.js
+src/scripts/ace/ext-old_ie.js
+src/scripts/ace/ext-searchbox.js
+src/scripts/ace/theme-idle_fingers.js
+src/scripts/vendor
+#src/scripts/jquery-1.9.1.min.js
