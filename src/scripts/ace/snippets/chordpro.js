@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs, no-template-curly-in-string */
 // eslint-disable-next-line no-unused-vars
-define('ace/snippets/chordpro', ['require', 'exports', 'module'], (require, exports, module) => {
+define('ace/snippets/chordpro.snippets', ['require', 'exports', 'module'], (require, exports, module) => {
   exports.snippetText = [
     // title tag
     'snippet t',
@@ -79,5 +79,19 @@ define('ace/snippets/chordpro', ['require', 'exports', 'module'], (require, expo
 
   ].join('\n');
 
+  // exports.scope = 'chordpro';
+});
+
+// eslint-disable-next-line no-unused-vars
+define('ace/snippets/chordpro', ['require', 'exports', 'module', 'ace/snippets/chordpro.snippets'], (require, exports, module) => {
+  exports.snippetText = require('./chordpro.snippets');
   exports.scope = 'chordpro';
 });
+
+(() => {
+  window.require(['ace/snippets/chordpro'], (m) => {
+    if (typeof module === 'object' && typeof exports === 'object' && module) {
+      module.exports = m;
+    }
+  });
+})();
