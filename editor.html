@@ -2,17 +2,10 @@
 <head>
   <meta charset="utf-8">
   <title>ChordPro Editor AceEditor Extension for Ukulele Music by UkeGeeks</title>
-  <link rel="stylesheet" href="styles/yuiReset.css">
-  <link rel="stylesheet" href="styles/ugs-ace-hdr.css">
-  <link rel="stylesheet" href="styles/ugs-ace-editor.css">
-  <link rel="stylesheet" href="styles/ugs-ace-help.css">
-  <link rel="stylesheet" href="styles/ace_editor.css" id="ace_editor">
-  <link rel="stylesheet" href="styles/ace-tm.css" id="ace-tm">
-  <link rel="stylesheet" href="styles/error_widget.css">
-  <link rel="stylesheet" href="styles/ace_snippet-marker.css">
-  <link rel="stylesheet" href="styles/ace_autocomplete.css">
-  <link rel="stylesheet" href="styles/ace_search.css" id="ace_searchbox">
-  <link rel="stylesheet" href="styles/ace-idle-fingers.css" id="ace-idle-fingers">
+  <link rel="stylesheet" href="src/styles/yuiReset.css">
+  <link rel="stylesheet" href="src/styles/ugs-ace-hdr.css">
+  <link rel="stylesheet" href="src/styles/ugs-ace-editor.css">
+  <link rel="stylesheet" href="src/styles/ugs-ace-help.css">
 </head>
 <body class="diagramsOnSide pageWidth_letter theme-normal">
   <main>
@@ -47,11 +40,26 @@ On the beach at Honaunau
 I can [A7]hear the old Hawaiians saying
 "Komo [D7]mai no kaua i ka hale welakahau"
 
+# ---------------------------------------------------
+# Try an auto-complete "snippet". Place the cursor
+# on a blank line, press "t" followed by the tab key.
+# ---------------------------------------------------
+
 {comment: Verse 2}
 It won't be [G]long till my ship will be sailing
 Back to [A7]Kona
 A [D7]grand old place
 That's always fair to [B7]see... you're telling me
+
+# ---------------------------------------------------
+# Now let's quickly add a chord that's already been
+# used in this song. Position the cursor anywhere
+# in this song and hold the {Control} key while
+# pressing the {Spacebar}: use arrows or keyboard
+# to choose from the list of chords in use and add
+# at this location.
+# ---------------------------------------------------
+
 I'm [E7]just a little Hawaiian and a homesick island boy
 I [A7]want to go back to my fish and poi
 
@@ -68,25 +76,13 @@ Where the [D7]humu-humu nuku-nuku a pua'a
 Go swimming [G]by
 </textarea>
 </main>
-<script src="scripts/ace/ace.min.js"></script>
-<script src="scripts/ace/ext-language_tools.min.js"></script>
-<script src="scripts/ace/ext/autocomplete.js"></script>
-<script src="scripts/ace/ext/autocomplete.popup.js"></script>
-<script src="scripts/ace/ext/autocomplete.util.js"></script>
-<script src="scripts/ace/ext/autocomplete.text_completer.js"></script>
-<script src="scripts/ace/ext/language_tools.min.js"></script>
-<script src="scripts/ace/ext/searchbox.js"></script>
-<script src="scripts/ace/ext/snippets.js"></script>
-<script src="scripts/ace/theme-idle_fingers.js"></script>
-<script src="scripts/ace/mode-chordpro.js"></script>
-<!--
-<script src="scripts/ace/mode/chordpro.js"></script>
-<script src="scripts/ace/mode/chordpro_highlight_rules.js"></script>
--->
-<script src="scripts/ace/snippets/text.js"></script>
-<script src="scripts/ace/snippets/chordpro.js"></script>
+<!-- setup Ace -->
+<script src="src/ace/ace.js"></script>
+<script src="src/ace/ext-language_tools.js"></script>
+<script src="src/ace/ext-inline_autocomplete.js"></script>
+<script src="src/ace/ext-searchbox.js"></script>
 <!-- our app -->
-<script src="scripts/ace/ugsAce.js"></script>
-<script src="scripts/startup.js"></script>
+<script src="src/scripts/ugsAce.js"></script>
+<script src="src/scripts/startup.js"></script>
 </body>
 </html>

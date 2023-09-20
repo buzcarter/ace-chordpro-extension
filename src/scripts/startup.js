@@ -1,6 +1,10 @@
 (() => {
+  const Ids = {
+    EDITOR: 'aceEditor',
+  };
+
   const Selectors = {
-    EDITOR: '#aceEditor',
+    EDITOR: `#${Ids.EDITOR}`,
     HAMBURGER_BTN: '#aceHeaderHamburgerBtn',
     HELP_WRAP: '#aceHelp',
     SOURCE: '#chordProSource',
@@ -12,7 +16,6 @@
   };
 
   let isHelpOpen = false;
-  let editor = null;
 
   function showHelp() {
     isHelpOpen = !isHelpOpen;
@@ -26,28 +29,28 @@
       .toggle(Styles.EDITOR_HELP_VISIBLE, isHelpOpen);
   }
 
-  function showAce() {
-    editor = window.ace.edit('aceEditor');
+  function initAce(songText) {
+    const editor = window.ace.edit(Ids.EDITOR);
     editor.setTheme('ace/theme/idle_fingers');
-    editor.getSession().setMode('ace/mode/chordpro');
+    editor.session.setMode('ace/mode/chordpro');
     editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
     });
     editor.completers = [window.ugsAce.chordCompleter];
-    copySongToAce();
-  }
-
-  function copySongToAce() {
-    const songText = document.querySelector(Selectors.SOURCE).value;
     editor.setValue(songText);
     editor.gotoLine(1);
   }
 
-  function init() {
+  function initHelp() {
     document.querySelector(Selectors.HELP_WRAP).innerHTML = window.ugsAce.helpHtml;
     document.querySelector(Selectors.HAMBURGER_BTN).addEventListener('click', showHelp);
-    showAce();
+  }
+
+  function init() {
+    const songText = document.querySelector(Selectors.SOURCE).value;
+    initHelp();
+    initAce(songText);
   }
 
   init();
