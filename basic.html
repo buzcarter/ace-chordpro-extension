@@ -59,6 +59,9 @@ That's always fair to [B7]see... you're telling me
 # pressing the {Spacebar}: use arrows or keyboard
 # to choose from the list of chords in use and add
 # at this location.
+#
+# Tip: a space is required between a word and
+# inserting a chord
 # ---------------------------------------------------
 
 I'm [E7]just a little Hawaiian and a homesick island boy
@@ -82,7 +85,6 @@ Go swimming [G]by
 <script src="src/ace/ext-language_tools.js"></script>
 <script src="src/ace/ext-inline_autocomplete.js"></script>
 <script src="src/ace/ext-searchbox.js"></script>
-<script src="src/scripts/ugsAce.js"></script>
 <script>
 (() => {
   const EDITOR_ID = 'songEditor';
@@ -100,9 +102,6 @@ Go swimming [G]by
     enableBasicAutocompletion: true,
     enableSnippets: true,
   });
-
-  // TODO: I'll fix this, I swear :D
-  editor.completers = [window.ugsAce.chordCompleter];
 })();
 </script>
 </body>

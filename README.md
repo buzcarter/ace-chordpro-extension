@@ -1,6 +1,6 @@
 # UkeGeeks Ace Editor ChordPro Language Extension
 
-ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/).
+ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/) (version 1.27.0).
 
 **Important:** *This is early stages of updating the UkeGeek's Scriptasaurus Song Editor, as such,
 this is an alpha test release: the final installation & usage is likely to change greatly.*
@@ -39,9 +39,6 @@ editor.setOptions({
     enableBasicAutocompletion: true,
     enableSnippets: true,
 });
-
-// TODO: I'll fix this, I swear :D
-editor.completers = [window.ugsAce.chordCompleter];
 ```
 
 ## License
