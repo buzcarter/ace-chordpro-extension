@@ -1,6 +1,10 @@
 (() => {
+  const Ids = {
+    EDITOR: 'aceEditor',
+  };
+
   const Selectors = {
-    EDITOR: '#aceEditor',
+    EDITOR: `#${Ids.EDITOR}`,
     HAMBURGER_BTN: '#aceHeaderHamburgerBtn',
     HELP_WRAP: '#aceHelp',
     SOURCE: '#chordProSource',
@@ -26,7 +30,7 @@
   }
 
   function initAce(songText) {
-    const editor = window.ace.edit('aceEditor');
+    const editor = window.ace.edit(Ids.EDITOR);
     editor.setTheme('ace/theme/idle_fingers');
     editor.session.setMode('ace/mode/chordpro');
     editor.setOptions({

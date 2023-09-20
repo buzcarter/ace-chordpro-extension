@@ -1,10 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'], (require, exports, module) => {
   const oop = require('../lib/oop');
-
   const { TextHighlightRules } = require('./text_highlight_rules');
 
-  function ChordproHighlightRules() {
+  const ChordProHighlightRules = function CpmHighlightRules() {
     // capture groups
     const reOpenBrace = '(^\\s*{)'; // no spaces allowed between "{" and the command, removed \\s*
     const reCloseBrace = '(\\s*}\\s*$)';
@@ -103,9 +102,65 @@ define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ac
         defaultToken: 'comment',
       }],
     };
-  }
+    this.normalizeRules();
+  };
 
-  oop.inherits(ChordproHighlightRules, TextHighlightRules);
+  oop.inherits(ChordProHighlightRules, TextHighlightRules);
 
-  exports.ChordproHighlightRules = ChordproHighlightRules;
+  // eslint-disable-next-line no-unused-vars
+  ChordProHighlightRules.getTagRule = function cpmTagRule(start) {
+    return {
+      token: 'comment.doc.tag.storage.type',
+      regex: '\\b(?:TODO|FIXME|XXX|HACK)\\b',
+    };
+  };
+
+  ChordProHighlightRules.getStartRule = function cpmStartRule(start) {
+    return {
+      token: 'comment.doc',
+      regex: '\\/\\*(?=\\*)',
+      next: start,
+    };
+  };
+
+  ChordProHighlightRules.getEndRule = function cnonEndRule(start) {
+    return {
+      token: 'comment.doc',
+      regex: '\\*\\/',
+      next: start,
+    };
+  };
+
+  exports.ChordProHighlightRules = ChordProHighlightRules;
 });
+
+// eslint-disable-next-line no-unused-vars
+define('ace/mode/chordpro', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/chordpro_highlight_rules'], (require, exports, module) => {
+  const oop = require('../lib/oop');
+  const TextMode = require('./text').Mode;
+  const { ChordProHighlightRules } = require('./chordpro_highlight_rules');
+
+  const Mode = function cpmMode() {
+    this.HighlightRules = ChordProHighlightRules;
+  };
+
+  oop.inherits(Mode, TextMode);
+
+  (function cpmWorker() {
+    // eslint-disable-next-line no-unused-vars
+    this.createWorker = (session) => null;
+
+    this.$id = 'ace/mode/chordpro';
+    this.snippetFileId = 'ace/snippets/chordpro';
+  }).call(Mode.prototype);
+
+  exports.Mode = Mode;
+});
+
+(() => {
+  window.require(['ace/mode/chordpro'], (m) => {
+    if (typeof module === 'object' && typeof exports === 'object' && module) {
+      module.exports = m;
+    }
+  });
+})();

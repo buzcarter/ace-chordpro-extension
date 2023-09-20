@@ -13,11 +13,11 @@ this is an alpha test release: the final installation & usage is likely to chang
 npm install @ukegeeks/ace-chordpro-extension
 ```
 
-## Usage
+## Demo
 
-Currently the `define` statement auto-complete snippet defaults to four strings (for ukulele fans out there)
+Load "editor.html" in your browser.
 
-
+Currently the `define` & `tab` statements auto-complete snippet defaults to four strings (for ukulele fans out there)
 
 ## License
 
