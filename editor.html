@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ChordPro Editor AceEditor Extension for Ukulele Music by UkeGeeks</title>
+  <title>ChordPro Song Editor, an Ace Editor Extension for Ukulele Music by UkeGeeks</title>
   <link rel="stylesheet" href="src/styles/yuiReset.css">
   <link rel="stylesheet" href="src/styles/ugs-ace-hdr.css">
   <link rel="stylesheet" href="src/styles/ugs-ace-editor.css">
@@ -11,16 +11,144 @@
   <main>
     <header id="aceHeader" class="ugs-ace-hdr">
       <button id="aceHeaderHamburgerBtn" class="ugs-ace-hdr__hamburger-btn" title="Show options &amp; help"><span></span><span></span><span></span></button>
-      <strong>Edit Song</strong>
-      <!-- <button class="ugs-ace-hdr__fullscreen-btn">Exit fullscreen</button> -->
+      <h1>ChordPro Song Editor</h1>
     </header>
     <section id="aceEditor" class="ugs-ace-editor"></section>
-    <aside id="aceHelp" class="ugs-ace-help__wrap"></aside>
+    <aside id="aceHelp" class="ugs-ace-help__wrap">
+      <div class="ugs-ace-help__content">
+        <h3>Keyboard Shortcuts</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Shortcut</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <code class="ugs-ace-help__key">CTRL</code> + <code class="ugs-ace-help__key">F</code>
+              </td>
+              <td>Find</td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <code class="ugs-ace-help__key">CTRL</code> + <code class="ugs-ace-help__key">H</code>
+              </td>
+              <td>Search &amp; Replace</td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <code class="ugs-ace-help__key">ESCAPE</code>
+              </td>
+              <td>Close Find or Chord window</td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <code class="ugs-ace-help__key">CTRL</code> + <code class="ugs-ace-help__key">SPACEBAR</code>
+              </td>
+              <td>
+                Lists your song's chords. Use <code class="ugs-ace-help__key">DOWNARROW</code> &amp; <code class="ugs-ace-help__key">UPARROW</code> to
+                choose one, or type a few letters of the chord name to narrow suggestions. Press <code class="ugs-ace-help__key">ENTER</code> to add it to your song.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Snippets</h3>
+        <p>
+          Snippets are bits of ChordPro markup that you may add to your song by just typing a few letters and then pressing
+          the <code class="ugs-ace-help__key">TAB</code> key.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Snippet</th>
+              <th>ChordPro Markup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>t</strong> or <strong>title</strong>
+              </td>
+              <td>
+                <code class="snip">{title: <em>TITLE</em>}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>st</strong> or <strong>subtitle</strong>
+              </td>
+              <td>
+                <code class="snip">{subtitle: <em>TITLE</em>}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>a</strong> or <strong>artist</strong>
+              </td>
+              <td>
+                <code class="snip">{artist: <em>NAME</em>}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>al</strong> or <strong>album</strong>
+              </td>
+              <td>
+                <code class="snip">{album: <em>TITLE</em>}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>c</strong> or <strong>comment</strong>
+              </td>
+              <td>
+                <code class="snip">{comment: <em>DESCRIPTION</em>}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>col</strong> or <strong>column</strong>
+              </td>
+              <td>
+                <code class="snip">{column_break}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>chorus</strong>
+              </td>
+              <td>
+                Adds complete chorus block, beginning with <code class="snip">{start_of_chorus}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="ugs-ace-help__td-key">
+                <strong>tab</strong>
+              </td>
+              <td>
+                Adds complete tablature block, beginning with <code class="snip">{start_of_tab}</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Others: <code>soc</code> &amp; <code>eoc</code> (mark <em>chorus</em> block) and <code>sot</code> &amp;
+          <code>eot</code> (mark <em>tab</em> block). <code>d</code> adds <code>{define:...}</code> tag.
+        </p>
+        <p>
+          TIP: When a snippet's added some &ldquo;placeholder text&rdquo; may be highlighted -- just type whatever you wish
+          to replace this. If more than one placeholder is available pressing <code class="ugs-ace-help__key">TAB</code> again will cycle
+          through them.
+        </p>
+      </div>
+    </aside>
 <textarea id="chordProSource" wrap="off">
 # ---------------------------------------------------
 # This sample song shows how to markup your tune in
-# ChordPro format (visit the User Guide for more
-# help and examples).
+# ChordPro format. Click the "hamburger" to show
+# useful help tips.
 #
 # First, lines beginning with # are ignored, these
 # are hidden notes, memos to yourself; they won't be
@@ -58,6 +186,9 @@ That's always fair to [B7]see... you're telling me
 # pressing the {Spacebar}: use arrows or keyboard
 # to choose from the list of chords in use and add
 # at this location.
+#
+# Tip: a space is required between a word and
+# inserting a chord
 # ---------------------------------------------------
 
 I'm [E7]just a little Hawaiian and a homesick island boy
@@ -81,8 +212,68 @@ Go swimming [G]by
 <script src="src/ace/ext-language_tools.js"></script>
 <script src="src/ace/ext-inline_autocomplete.js"></script>
 <script src="src/ace/ext-searchbox.js"></script>
-<!-- our app -->
-<script src="src/scripts/ugsAce.js"></script>
-<script src="src/scripts/startup.js"></script>
+<script>
+(() => {
+  const Ids = {
+    EDITOR: 'aceEditor',
+  };
+
+  const Selectors = {
+    EDITOR: `#${Ids.EDITOR}`,
+    HAMBURGER_BTN: '#aceHeaderHamburgerBtn',
+    HELP_WRAP: '#aceHelp',
+    SOURCE: '#chordProSource',
+  };
+
+  const Styles = {
+    OPEN: 'ugs-ace-help__wrap--open',
+    EDITOR_HELP_VISIBLE: 'ugs-ace-editor--help-open',
+  };
+
+  let isHelpOpen = false;
+
+  function showHelp() {
+    isHelpOpen = !isHelpOpen;
+    document
+      .querySelector(Selectors.HELP_WRAP)
+      .classList
+      .toggle(Styles.OPEN, isHelpOpen);
+    document
+      .querySelector(Selectors.EDITOR)
+      .classList
+      .toggle(Styles.EDITOR_HELP_VISIBLE, isHelpOpen);
+  }
+
+  function init() {
+    // attach our show/hide help sidebar to the "hamburger" button
+    document.querySelector(Selectors.HAMBURGER_BTN).addEventListener('click', showHelp);
+
+    // in this example I'm preserving the original CPM Markup, so we'll not
+    // have Ace replace the element
+    const songText = document.querySelector(Selectors.SOURCE).value;
+
+    // Setup the editor
+    const editor = window.ace.edit(Ids.EDITOR);
+
+    // Choose our color theme
+    editor.setTheme('ace/theme/idle_fingers');
+
+    // tell Ace to treat our text as CPM
+    editor.session.setMode('ace/mode/chordpro');
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+    });
+
+    // Load Ace with our song source (raw CPM)
+    editor.setValue(songText);
+
+    // last, let's put the cursor on the first line, to get things started.
+    editor.gotoLine(1);
+  }
+
+  init();
+})();
+</script>
 </body>
 </html>

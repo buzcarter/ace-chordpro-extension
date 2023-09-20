@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ChordPro Editor AceEditor Extension for Ukulele Music by UkeGeeks</title>
+  <style type="text/css" media="screen">
+    body {
+      overflow: hidden;
+    }
+
+    .my-editor {
+      margin: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+<pre id="songEditor" class="my-editor">
+# ---------------------------------------------------
+# This sample song shows how to markup your tune in
+# ChordPro format.
+#
+# Lines beginning with # are ignored, these
+# are hidden notes, memos to yourself; they won't be
+# displayed in the final song.
+# ---------------------------------------------------
+
+{title: My Little Grass Shack in Kealakekua}
+{artist: Lyrics &amp; Music: B.Cogswell, T.Harrison and J.Noble (1933)}
+
+{comment: Verse 1}
+I want to go [G]back to my little grass shack
+In Kealakekua, [A7]Hawaii
+I want to [D7]be with all the kanes and wahines
+That I used to [G]know... so long ago
+I can [B7]hear the old guitars a-playing[E7]
+On the beach at Honaunau
+I can [A7]hear the old Hawaiians saying
+"Komo [D7]mai no kaua i ka hale welakahau"
+
+# ---------------------------------------------------
+# Try an auto-complete "snippet". Place the cursor
+# on a blank line, press "t" followed by the tab key.
+# ---------------------------------------------------
+
+{comment: Verse 2}
+It won't be [G]long till my ship will be sailing
+Back to [A7]Kona
+A [D7]grand old place
+That's always fair to [B7]see... you're telling me
+
+# ---------------------------------------------------
+# Now let's quickly add a chord that's already been
+# used in this song. Position the cursor anywhere
+# in this song and hold the {Control} key while
+# pressing the {Spacebar}: use arrows or keyboard
+# to choose from the list of chords in use and add
+# at this location.
+#
+# Tip: a space is required between a word and
+# inserting a chord
+# ---------------------------------------------------
+
+I'm [E7]just a little Hawaiian and a homesick island boy
+I [A7]want to go back to my fish and poi
+
+{start_of_chorus}
+{comment: Chorus}
+I want to go [G]back to my little grass shack
+In Kealakekua, [A7]Hawaii
+Where the [D7]humu-humu nuku-nuku a pua'a
+Go swimming [G]by
+{end_of_chorus}
+
+{comment: Outro}
+Where the [D7]humu-humu nuku-nuku a pua'a
+Go swimming [G]by
+</pre>
+</main>
+<!-- setup Ace -->
+<script src="src/ace/ace.js"></script>
+<script src="src/ace/ext-language_tools.js"></script>
+<script src="src/ace/ext-inline_autocomplete.js"></script>
+<script src="src/ace/ext-searchbox.js"></script>
+<script>
+(() => {
+  const EDITOR_ID = 'songEditor';
+
+  // Let Ace know where it should inject itself on the page,
+  // it will grab the contents within this elemtn (`<pre/>`)
+  const editor = window.ace.edit(EDITOR_ID);
+
+  // choose a color scheme (see Ace prebuilts for dozens of choices)
+  editor.setTheme('ace/theme/idle_fingers');
+
+  // Now we tell Ace to treat our text as ChordPro
+  editor.session.setMode('ace/mode/chordpro');
+  editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+  });
+})();
+</script>
+</body>
+</html>
