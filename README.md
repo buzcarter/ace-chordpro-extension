@@ -2,6 +2,10 @@
 
 ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/) (version 1.27.0).
 
+Try the [Live Demo](https://buzcarter.github.io/ace-chordpro-extension/editor.html) (includes Help tips)
+
+For a basic setup look at [Live Basic Install](https://buzcarter.github.io/ace-chordpro-extension/basic.html)
+
 **Important:** *This is early stages of updating the UkeGeek's Scriptasaurus Song Editor, as such,
 this is an alpha test release: the final installation & usage is likely to change greatly.*
 
