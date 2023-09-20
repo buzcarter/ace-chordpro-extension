@@ -22,13 +22,13 @@
   text-align: left;
 }
 
-.aceHelp {
+.ugs-ace-help__content {
   border-top: 2px solid #333;
   padding: 1em .6em;
 }
 
-.aceHelp h1,
-.aceHelp h3 {
+.ugs-ace-help__content h1,
+.ugs-ace-help__content h3 {
   color: #222;
   font-size: 2.5em;
   font-weight: 500;
@@ -36,36 +36,36 @@
   margin: 0 0 1em;
 }
 
-.aceHelp h3 {
+.ugs-ace-help__content h3 {
   font-size: 1.3em;
 }
 
-.aceHelp p {
+.ugs-ace-help__content p {
   line-height: 1.6em;
   margin: 0 0 1em;
 }
 
-.aceHelp table {
+.ugs-ace-help__content table {
   margin: 20px 0 10px;
 }
 
-.aceHelp strong {
+.ugs-ace-help__content strong {
   font-weight: bold;
 }
 
-.aceHelp td,
-.aceHelp th {
+.ugs-ace-help__content td,
+.ugs-ace-help__content th {
   color: #787878;
   padding: 0 .8em .8em 0;
   vertical-align: baseline;
   font-size: 12px;
 }
 
-.aceHelp th {
+.ugs-ace-help__content th {
   font-weight: bold;
 }
 
-.aceHelp .key {
+.ugs-ace-help__key {
   background-color: #666;
   border: 0 none;
   border-radius: .22em;
@@ -79,7 +79,7 @@
   text-transform: uppercase;
 }
 
-.aceHelp .shortKeys {
+.ugs-ace-help__td-key {
   white-space: nowrap;
   padding-right: 1.4em;
 }

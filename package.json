@@ -1,6 +1,6 @@
 {
   "name": "@ukegeeks/ace-chordpro-extension",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "ChordPro song editing extension for Ace Editor",
   "author": "B.Carter <buz@ukegeeks.com>",
   "license": "GPL-3.0-or-later",

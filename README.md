@@ -15,14 +15,37 @@ npm install @ukegeeks/ace-chordpro-extension
 
 ## Demo
 
-Load "editor.html" in your browser.
+Load "editor.html" (includes help sidebar) in your browser.
 
 Currently the `define` & `tab` statements auto-complete snippet defaults to four strings (for ukulele fans out there)
 
+## Usage
+
+Load "basic.html" (a barebones usage) in your browser.
+
+```js
+const EDITOR_ID = 'songEditor';
+
+// Let Ace know where it should inject itself on the page,
+// it will grab the contents within this elemtn (`<pre/>`)
+const editor = window.ace.edit(EDITOR_ID);
+
+// choose a color scheme (see Ace prebuilts for dozens of choices)
+editor.setTheme('ace/theme/idle_fingers');
+
+// Now we tell Ace to treat our text as ChordPro
+editor.session.setMode('ace/mode/chordpro');
+editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+});
+
+// TODO: I'll fix this, I swear :D
+editor.completers = [window.ugsAce.chordCompleter];
+```
+
 ## License
 
-This library is licensed under GNU General Public License.
-
-* [http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)
+This library is licensed under [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 Use it, change it, fork it, but please leave the author attribution.
