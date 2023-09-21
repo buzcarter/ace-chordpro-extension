@@ -9,15 +9,17 @@ __tests__
 .lib
 .npmrc
 .nvmrc
+.tmp
 .vscode
 *.tgz
 coverage
 jest
 jest.config.cjs
+tasks
 # src
 tsconfig.json
 webpack.config**.*
 
 # until I fix WebPack CSS script
-/dist/song-formatter.js
-/dist/song-formatter.js.map
+src/noop.js
+dist/empty.js
