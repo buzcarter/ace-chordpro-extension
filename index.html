@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACE ChordPro Extension</title>
+  <meta name="description" content="ChordPro song editing for the Ace editor: syntax highlighting, snippets and chord autocomplete. Part of UkeGeeks." />
+  <style>
+    :root {
+      --bg: #f5f7f2;
+      --fg: #1d2419;
+      --muted: #5b6657;
+      --line: #cdd5c6;
+      --accent: #3d8a1c;
+      --code-bg: #e8eee2;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151a14;
+        --fg: #e2e9dc;
+        --muted: #9ba696;
+        --line: #364132;
+        --accent: #84cb5c;
+        --code-bg: #222b1f;
+        color-scheme: dark;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 40px 16px 64px; display: grid; gap: 28px; }
+    h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 8px; }
+    .lede { margin: 0; color: var(--muted); font-size: 1.1rem; max-width: 62ch; }
+    h2 { font-size: 1.15rem; margin: 0 0 10px; }
+    a { color: var(--accent); }
+    code, pre.install {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: var(--code-bg);
+      border-radius: 6px;
+    }
+    code { padding: 1px 5px; }
+    pre.install { margin: 0; padding: 12px 14px; overflow-x: auto; }
+    .tips { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 4px; }
+    #songEditor {
+      height: 420px;
+      margin: 0;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+    footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ACE ChordPro Extension</h1>
+      <p class="lede">ChordPro song editing for the <a href="https://ace.c9.io/">Ace editor</a>: syntax highlighting, snippets and chord autocomplete. Try it below; this page loads nothing but the published bundle, <code>dist/ace-chordpro.min.js</code>.</p>
+    </header>
+
+    <section>
+<pre id="songEditor">{title: My Little Grass Shack in Kealakekua}
+{artist: B.Cogswell, T.Harrison and J.Noble (1933)}
+
+# Lines starting with # are notes to yourself; they're never printed.
+
+{comment: Verse 1}
+I want to go [G]back to my little grass shack
+In Kealakekua, [A7]Hawaii
+I want to [D7]be with all the kanes and wahines
+That I used to [G]know... so long ago
+
+# Try it: on a blank line type "t" then press Tab for a snippet,
+# or press Ctrl+Space to insert a chord this song already uses.
+</pre>
+    </section>
+
+    <section>
+      <h2>Things to try</h2>
+      <ul class="tips">
+        <li>Chords in <code>[brackets]</code>, directives in <code>{braces}</code> and <code># notes</code> each get their own colour.</li>
+        <li>On a blank line, type <code>t</code> and press <kbd>Tab</kbd> to expand a snippet.</li>
+        <li>Press <kbd>Ctrl</kbd> + <kbd>Space</kbd> to pick from the chords already in the song.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Use it on your page</h2>
+<pre class="install">npm install @ukegeeks/ace-chordpro-extension
+
+&lt;script src="node_modules/@ukegeeks/ace-chordpro-extension/dist/ace-chordpro.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const editor = ace.edit('songEditor');
+  editor.session.setMode('ace/mode/chordpro');
+&lt;/script&gt;</pre>
+    </section>
+
+    <section class="links">
+      <a href="editor.html">Full editor demo (with help panel)</a>
+      <a href="basic.html">Minimal setup</a>
+      <a href="https://github.com/buzcarter/ace-chordpro-extension">Source on GitHub</a>
+      <a href="https://www.npmjs.com/package/@ukegeeks/ace-chordpro-extension">npm package</a>
+    </section>
+
+    <footer>
+      Part of <a href="https://ukegeeks.org">UkeGeeks</a>. GPL-3.0. Built on Ace by Ajax.org (BSD).
+    </footer>
+  </main>
+
+  <script src="dist/ace-chordpro.min.js"></script>
+  <script>
+    const editor = window.ace.edit('songEditor');
+    editor.setTheme('ace/theme/idle_fingers');
+    editor.session.setMode('ace/mode/chordpro');
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+    });
+  </script>
+</body>
+</html>
