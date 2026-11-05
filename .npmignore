@@ -1,4 +1,5 @@
 __tests__
+test
 .babelrc
 .built
 .editorconfig
@@ -18,8 +19,4 @@ jest.config.cjs
 tasks
 # src
 tsconfig.json
-webpack.config**.*
 
-# until I fix WebPack CSS script
-src/noop.js
-dist/empty.js

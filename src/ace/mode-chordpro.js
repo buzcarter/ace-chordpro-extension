@@ -1,3 +1,4 @@
+/* eslint-env browser, amd */
 // eslint-disable-next-line no-unused-vars
 define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'], (require, exports, module) => {
   const oop = require('../lib/oop');
@@ -5,7 +6,7 @@ define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ac
 
   const ChordProHighlightRules = function CpmHighlightRules() {
     // capture groups
-    const reOpenBrace = '(^\\s*{)'; // no spaces allowed between "{" and the command, removed \\s*
+    const reOpenBrace = '(^\\s*{)'; // optional leading whitespace before "{"
     const reCloseBrace = '(\\s*}\\s*$)';
     const reColon = '(\\s*:)';
     // stand alone
@@ -67,7 +68,7 @@ define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ac
         regex: reCloseBrace,
         next: 'start',
       }, {
-        token: 'constant.mumeric',
+        token: 'constant.numeric',
         regex: reNumber,
       }, {
         token: 'keyword.control',
@@ -96,7 +97,7 @@ define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ac
         token: 'string',
         regex: '[a-gA-G][b#]?',
       }, {
-        token: 'constant.mumeric',
+        token: 'constant.numeric',
         regex: reNumber,
       }, {
         defaultToken: 'comment',
@@ -107,35 +108,11 @@ define('ace/mode/chordpro_highlight_rules', ['require', 'exports', 'module', 'ac
 
   oop.inherits(ChordProHighlightRules, TextHighlightRules);
 
-  // eslint-disable-next-line no-unused-vars
-  ChordProHighlightRules.getTagRule = function cpmTagRule(start) {
-    return {
-      token: 'comment.doc.tag.storage.type',
-      regex: '\\b(?:TODO|FIXME|XXX|HACK)\\b',
-    };
-  };
-
-  ChordProHighlightRules.getStartRule = function cpmStartRule(start) {
-    return {
-      token: 'comment.doc',
-      regex: '\\/\\*(?=\\*)',
-      next: start,
-    };
-  };
-
-  ChordProHighlightRules.getEndRule = function cnonEndRule(start) {
-    return {
-      token: 'comment.doc',
-      regex: '\\*\\/',
-      next: start,
-    };
-  };
-
   exports.ChordProHighlightRules = ChordProHighlightRules;
 });
 
 // eslint-disable-next-line no-unused-vars
-define('ace/mode/chordpro_autocomplete_chords', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'], (require, exports, module) => {
+define('ace/mode/chordpro_autocomplete_chords', ['require', 'exports', 'module'], (require, exports, module) => {
   const ChordsRegEx = /\[(.*?)\]/g;
 
   // to play with IE we'll use an object instead of plain array
@@ -168,6 +145,8 @@ define('ace/mode/chordpro_autocomplete_chords', ['require', 'exports', 'module',
       .map((key) => ({
         value: key,
         meta: `${chords[key]} occurrence${chords[key] > 1 ? 's' : ''}`,
+        // rank chords above ACE's word and snippet suggestions
+        score: 1000 + chords[key],
       }))
       .sort(compare);
   };
@@ -183,14 +162,11 @@ define('ace/mode/chordpro_autocomplete_chords', ['require', 'exports', 'module',
 });
 
 // eslint-disable-next-line no-unused-vars
-define('ace/mode/chordpro', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/ext/language_tools', 'ace/mode/chordpro_highlight_rules', 'ace/mode/chordpro_autocomplete_chords'], (require, exports, module) => {
+define('ace/mode/chordpro', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/chordpro_highlight_rules', 'ace/mode/chordpro_autocomplete_chords'], (require, exports, module) => {
   const oop = require('../lib/oop');
   const { Mode: TextMode } = require('./text');
-  const { setCompleters } = require('../ext/language_tools');
   const { ChordProHighlightRules } = require('./chordpro_highlight_rules');
   const { ChordProAutocompleteChords } = require('./chordpro_autocomplete_chords');
-
-  setCompleters([ChordProAutocompleteChords]);
 
   const Mode = function cpmMode() {
     this.HighlightRules = ChordProHighlightRules;
@@ -204,6 +180,10 @@ define('ace/mode/chordpro', ['require', 'exports', 'module', 'ace/lib/oop', 'ace
 
     this.$id = 'ace/mode/chordpro';
     this.snippetFileId = 'ace/snippets/chordpro';
+    // ACE's keyword completer delegates to the mode's own completer, so chord
+    // suggestions apply only to ChordPro editors. (A global setCompleters()
+    // would replace the completers of every editor on the page.)
+    this.completer = ChordProAutocompleteChords;
   }).call(Mode.prototype);
 
   exports.Mode = Mode;
