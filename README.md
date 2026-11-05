@@ -2,7 +2,7 @@
 
 ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/) (version 1.27.0).
 
-Try the [Live Editor Demo](https://buzcarter.github.io/ace-chordpro-extension/editor.html) (includes Help tips)
+Try it on the [demo page](https://buzcarter.github.io/ace-chordpro-extension/), which loads only the published bundle (`dist/ace-chordpro.min.js`), or the [Live Editor Demo](https://buzcarter.github.io/ace-chordpro-extension/editor.html) (includes Help tips)
 
 For a basic setup look at [Live Minimal Editor](https://buzcarter.github.io/ace-chordpro-extension/basic.html)
 
@@ -71,3 +71,9 @@ editor.setOptions({
 This library is licensed under [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 Use it, change it, fork it, but please leave the author attribution.
+
+## Demo site
+
+`.github/workflows/deploy-demo.yml` builds the bundle on every pull request, and on every push to `main` publishes the demo site to GitHub Pages: `index.html` (uses `dist/`), `editor.html` and `basic.html` (use `src/`).
+
+One-time setting: Settings → Pages → Source: **GitHub Actions**.
