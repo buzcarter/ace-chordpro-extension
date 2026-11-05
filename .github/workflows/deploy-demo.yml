@@ -1,6 +1,6 @@
 # Build the bundle and publish the demo site to GitHub Pages.
 #
-# - Pull requests: build only (shows whether the bundle still builds).
+# - Pull requests: lint, build, and test the built bundle.
 # - Push to main: build, then deploy index.html (uses dist/ace-chordpro.min.js),
 #   editor.html and basic.html (use src/) to GitHub Pages.
 #
@@ -33,7 +33,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
+      - run: npm test
 
       - name: Assemble demo site
         if: github.event_name != 'pull_request'

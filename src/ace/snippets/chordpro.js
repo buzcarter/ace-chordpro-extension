@@ -1,3 +1,4 @@
+/* eslint-env browser, amd */
 /* eslint-disable no-template-curly-in-string */
 define('ace/snippets/chordpro.snippets', ['require', 'exports', 'module'], (require, exports, module) => {
   module.exports = '# title tag\n'

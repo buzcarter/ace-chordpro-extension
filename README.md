@@ -1,6 +1,6 @@
 # UkeGeeks Ace Editor ChordPro Language Extension
 
-ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/) (version 1.27.0).
+ChordPro song editing extension for the [Ace Editor](https://ace.c9.io/) (version 1.26.0).
 
 Try it on the [demo page](https://buzcarter.github.io/ace-chordpro-extension/), which loads only the published bundle (`dist/ace-chordpro.min.js`), or the [Live Editor Demo](https://buzcarter.github.io/ace-chordpro-extension/editor.html) (includes Help tips)
 
@@ -71,6 +71,24 @@ editor.setOptions({
 This library is licensed under [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 Use it, change it, fork it, but please leave the author attribution.
+
+## Development
+
+```
+npm install
+npm run build   # writes dist/ace-chordpro.min.js and dist/styles/
+npm test        # tests the built bundle in a simulated browser page
+npm run lint
+```
+
+## Changes in 1.0.0
+
+* **Chord autocomplete is scoped to ChordPro editors.** The mode now provides its own completer instead of replacing the completers of every Ace editor on the page. In a ChordPro editor, Ctrl+Space lists the song's chords first, followed by Ace's usual snippet and word suggestions.
+* Numbers inside `{define}` and tab blocks are highlighted (`constant.numeric`).
+* The bundle starts with its licence header, and Ace's BSD notice is kept intact.
+* The CSS ships in `dist/styles/`.
+* Correct Ace version in the docs: 1.26.0.
+* Build is a small Node script (no webpack); tests run in CI.
 
 ## Demo site
 
