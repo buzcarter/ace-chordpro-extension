@@ -13,6 +13,8 @@ this is an alpha test release: the final installation & usage is likely to chang
 
 ## Part of the UkeGeeks family
 
+<img src="docs/imgs/ukegeeks-mascot-192.png" alt="The UkeGeeks mascot, a dinosaur playing the ukulele" width="96" height="96" align="right">
+
 - **[ukegeeks.org](https://ukegeeks.org)**: edit a song online, the User's Guide, and the blog.
 - **[UkeGeeks Songbook](https://github.com/buzcarter/UkeGeeks)**: your own songbook app, run with Node.js or PHP.
 - **[Song Formatter](https://github.com/buzcarter/song-formatter)**: chord diagrams and songsheets on your own website.
