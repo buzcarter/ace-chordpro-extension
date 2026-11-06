@@ -11,6 +11,17 @@ this is an alpha test release: the final installation & usage is likely to chang
 
 ![ukegeeks-AceEditor-ChordPro-extension-screenshot](./docs/imgs/ukegeeks-AceEditor-ChordPro-extension-screenshot.png)
 
+## Part of the UkeGeeks family
+
+<img src="docs/imgs/ukegeeks-mascot-192.png" alt="The UkeGeeks mascot, a dinosaur playing the ukulele" width="96" height="96" align="right">
+
+- **[ukegeeks.org](https://ukegeeks.org)**: edit a song online, the User's Guide, and the blog.
+- **[UkeGeeks Songbook](https://github.com/buzcarter/UkeGeeks)**: your own songbook app, run with Node.js or PHP.
+- **[Song Formatter](https://github.com/buzcarter/song-formatter)**: chord diagrams and songsheets on your own website.
+- **[ACE ChordPro Extension](https://github.com/buzcarter/ace-chordpro-extension)** (this repo): ChordPro editing for the Ace code editor.
+
+Not sure which one you need? See [which UkeGeeks tool is right for you](https://ukegeeks.org/projects/).
+
 ## Installation
 
 Download the files and run locally:
